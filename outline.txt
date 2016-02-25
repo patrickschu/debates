@@ -1,0 +1,23 @@
+###NEGATIVE WORDS
+#neg sentiment here: https://github.com/jeffreybreen/twitter-sentiment-analysis-tutorial-201107/blob/master/data/opinion-lexicon-English/negative-words.txt
+#more constrained: http://www.enchantedlearning.com/wordlist/negativewords.shtml
+#http://eqi.org/fw_neg.htm
+
+
+
+filler words?
+guckma hier: http://homepage.psy.utexas.edu/homepage/faculty/Pennebaker/Reprints/Laserna_JLSP2014.pdf
+
+##THINKING WORDS
+http://www.fe.hku.hk/telec/pgram/5-gr/546f/546-022.htm
+
+ontological words, "asscoiated with thinking" , related to better health outcome
+https://www.learnthat.org/word_lists/view/12510
+http:http://wordnetweb.princeton.edu/perl/webwn?s=think&sub=Search+WordNet&o2=&o0=1&o8=1&o1=1&o7=&o5=&o9=&o6=&o3=&o4=&h=//www.thesaurus.com/browse/think
+
+pennys artikel
+
+
+###WORD DIFFERENCES
+##
+
