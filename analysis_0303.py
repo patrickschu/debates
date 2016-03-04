@@ -6,18 +6,19 @@ import re, os, string, nltk, numpy
 
 # moving parts
 dir="/Users/ps22344/Documents/debatefiles/"
-outputfilename="debates_0303"
+outputfilename="debates_0304"
 print "start"
 
 #getting files etc
 files=[f for f in os.listdir(dir) if not f.startswith(".")]
-#files=['CRUZ.txt']
+files=['RUBIO.txt']
 print "files we're working with: {}".format(",".join(files))
 #at some point, we should replace this with a regex
 annotations=['(CROSSTALK)', '(LAUGHTER)', '(BELL RINGS)', '(APPLAUSE)']
 #negative and positive words
 #cite this: https://www.cs.uic.edu/~liub/publications/www05-p536.pdf
 #note that they have "trump" as a positive word!
+#https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html
 negative=[w for w in open("negative-words.txt", "r").read().split("\n")]
 positive=[w for w in open("positive-words.txt", "r").read().split("\n")]
 
@@ -53,6 +54,9 @@ spreadsheet=open(outputfilename+".csv", "a")
 
 
 
+spreadsheet.write(
+"name, wordcount, sentcount, averagewordlength, averagesentlength, questionfreq, thinkingfreq, positivefreq, negativefreq\n"
+)
 
 #main
 for fili in files:
@@ -90,29 +94,23 @@ for fili in files:
 	
 	
 	#what do we want to output?
+	#name, wordcount, sentcount, averagewordlength, averagesentlength, questionfreq, positivefreq, negativefreq
 	stats=[fili.rstrip(".txt"), 
 	len(words), 
 	len(sents), 
 	wordlength, 
 	sentlength, 
-	questions/len(words),
-	positiveemos/len(words), 
-	negativeemos/len(words)]
+	float(questions)/len(words),
+	float(thinkingverbs)/len(words),
+	float(positiveemos)/len(words), 
+	float(negativeemos)/len(words)]
 	
-	spreadsheet.write(",".join([str(i) for i in stats])+"\n")
-	print fili, "written"
+	#spreadsheet.write(",".join([str(i) for i in stats])+"\n")
+	print fili, "extracted"
 	print "\n\n----\n\n"
 	
 	
-spreadsheet.close()	
-	
-	
-
-	
-	
-	
-	
-	
+spreadsheet.close()
 	
 	
 	
