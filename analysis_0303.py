@@ -11,18 +11,13 @@ print "start"
 
 #getting files etc
 files=[f for f in os.listdir(dir) if not f.startswith(".")]
-files=['RUBIO.txt']
 print "files we're working with: {}".format(",".join(files))
-#at some point, we should replace this with a regex
 annotations=['(CROSSTALK)', '(LAUGHTER)', '(BELL RINGS)', '(APPLAUSE)']
 #negative and positive words
 #cite this: https://www.cs.uic.edu/~liub/publications/www05-p536.pdf
-#note that they have "trump" as a positive word!
 #https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html
 negative=[w for w in open("negative-words.txt", "r").read().split("\n")]
 positive=[w for w in open("positive-words.txt", "r").read().split("\n")]
-
-
 
 
 #featureextracter takes the inputstring and the search term; in this case an ontological
@@ -41,18 +36,6 @@ def wordextracter(inputtext, search_term, fili):
 
 #set up files
 spreadsheet=open(outputfilename+".csv", "a")
-#think verbs
-
-
-#negative, positive emotion
-
-
-#questions
-
-
-#comparing dict
-
-
 
 spreadsheet.write(
 "name, wordcount, sentcount, averagewordlength, averagesentlength, questionfreq, thinkingfreq, positivefreq, negativefreq\n"
@@ -73,8 +56,7 @@ for fili in files:
 	wordlength=numpy.mean([len(w) for w in words])
 	sentlength=numpy.mean([len(s.split()) for s in sents])
 	print "wordlength {}, sentencelength {}".format(wordlength, sentlength)
-	
-	
+
 	#think verbs
 	think=verbextracter(inputlowered, "(think|thought)", fili)
 	believe=verbextracter(inputlowered, "(believe|believed)", fili)
@@ -91,8 +73,7 @@ for fili in files:
 	#questions
 	questions=len(re.findall("\?", inputfile))
 	print "questions: ", questions
-	
-	
+
 	#what do we want to output?
 	#name, wordcount, sentcount, averagewordlength, averagesentlength, questionfreq, positivefreq, negativefreq
 	stats=[fili.rstrip(".txt"), 
@@ -112,7 +93,4 @@ for fili in files:
 	
 spreadsheet.close()
 	
-	
-	
-
 print "finish"
