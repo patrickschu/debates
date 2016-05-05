@@ -16,8 +16,8 @@ annotations=['CROSSTALK', 'LAUGHTER', 'APPLAUSE', 'CHEERS', 'CHEERING', 'INAUDIB
 #negative and positive words
 #cite this: https://www.cs.uic.edu/~liub/publications/www05-p536.pdf
 #https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html
-#negative=[w for w in open("negative-words.txt", "r").read().split("\n")]
-#positive=[w for w in open("positive-words.txt", "r").read().split("\n")]
+negative=[w for w in open("negative-words.txt", "r").read().split("\n")]
+positive=[w for w in open("positive-words.txt", "r").read().split("\n")]
 
 
 #featureextracter takes the inputstring and the search term; in this case an ontological
@@ -86,7 +86,7 @@ for fili in files:
         float(positiveemos)/len(words), 
         float(negativeemos)/len(words)]
         
-        #spreadsheet.write(",".join([str(i) for i in stats])+"\n")
+        spreadsheet.write(",".join([str(i) for i in stats])+"\n")
         print fili, "extracted"
         print "\n\n----\n\n"
 	
